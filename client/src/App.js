@@ -1,22 +1,19 @@
-import {useState} from react;
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter, Route } from 'react-router-dom'
+import Login from './pages/Login'
+import Register from './pages/Register'
+// import Dashboard from './pages/Dashboard'
 
-function App() {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  
-  return (
-    <div>
-      <h1>Register</h1>
-      <form>
-        <input type="text" placeholder="Name"/>
-        <input type="email" placeholder="Email"/>
-        <input type="password" placeholder="Password"/>
-      </form>
-    </div>
-  );
+const App = () => {
+    return (
+        <div>
+            <BrowserRouter>
+                <Route path="/login" exact component={Login} />
+                <Route path="/register" exact component={Register} />
+                {/* <Route path="/dashboard" exact component={Dashboard} /> */}
+            </BrowserRouter>
+        </div>
+    )
 }
 
-export default App;
+export default App
