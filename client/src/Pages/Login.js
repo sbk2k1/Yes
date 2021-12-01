@@ -12,14 +12,20 @@ function App() {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				name,
 				email,
 				password,
 			}),
 		})
 
     const data = await response.json()
-    console.log(data)
+
+    if(data.user){
+      lcoalStorage.setItem('token', data.user)
+      alert('Login Successful.')
+      window.location.href = '/dashboard'
+    } else{
+      alert('Please check Email and Password')
+    }
   }
 
   return (
@@ -30,7 +36,7 @@ function App() {
         <br />
         <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password" />
         <br />
-        <input type="submit" value="Register" />
+        <input type="submit" value="Login" />
       </form>
     </div>
   );

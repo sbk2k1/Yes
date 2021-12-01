@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import {useHistory} from 'react-router-dom'
 
 function App() {
   const [name, setName] = useState('')
@@ -20,7 +21,10 @@ function App() {
 		})
 
     const data = await response.json()
-    console.log(data)
+    
+    if(data.status === 'ok'){
+      history.push('/login')
+    }
   }
 
   return (
